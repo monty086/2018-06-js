@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 作用域：
+    * 全局作用域：浏览器一打开就形成一个全局的作用域
+    *   全局变量：全局作用域下声明的变量就是全局变量
+    * 私有作用域：函数执行的时候会形成一个私有的作用域
+    *   私有变量：私有作用域下声明的变量叫做私有变量+形参
+    *
+    * 作用域链：
+    *   在当前作用域下找到一个变量，优先找它的私有变量，如果私有变量没有，去它上级【要看当前作用域下在哪开辟的，在哪开辟的，上级就是谁】找，如果上级还没有，一直找到全局window，全局还没有会报错。
+    *
+    *
+    * */
+    /*var a =1;
+    function f() {
+        var a =2
+        fn()
+    }
+    function fn() {
+        console.log(a);
+    }
+    f()*/
+
+    var s="1"; //'12'
+    var g=10;
+    function fn1(g) { // 11
+        s+=2;
+        g++;
+        console.log(g); // 11
+    }
+    fn1(g);
+    console.log(s); //'12'
+    console.log(g); // 10
+
+
+    var aa=100;
+    var bb=200;
+    function fn2(aa) {
+        console.log(bb); // un...
+        var bb=1;
+        aa=2;
+        console.log(bb + aa);//3 202
+    }
+    fn2(bb);
+    console.log(aa + bb);//300
+</script>

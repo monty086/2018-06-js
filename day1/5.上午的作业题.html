@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<scirpt>
+    //1.
+
+    console.log(a); // undefined
+    var a = 13;
+    function fn() { //  a
+        console.log(a); //undefined 1
+        var a = 1;
+    }
+    fn();
+    console.log(a);// 13
+
+    //2.xxx
+    console.log(a);//un
+    var a = 13;
+    function fn1() {
+        console.log(a);
+        a = 1;
+    }
+    console.log(a); //13
+
+
+    //3.
+    // console.log(a);// 报错
+    a = 13 // window.a = 13 1
+    function fn() {
+        console.log(a); // 13
+        a = 1;
+    }
+    fn();
+    console.log(a); // 1
+
+    //4.
+    var foo = 1;
+    function bar() {
+        if (!foo) {
+            var foo = 10
+        }
+        console.log(foo);// 10
+    }
+    bar();
+
+    //5.
+    function f5() {
+        f=ff(); //f = undefined => false
+        return f; //return false
+        function ff() {
+            return "f" in window; // 判断属性名是否在当前对象当中
+        };
+        var f;
+    }
+    console.log(f5());  // false
+
+    //6.
+    var a = b = c = [1, 2, 3, 4];
+    b = 9; //
+    a[1] = 0; //
+    console.log(b[0]);
+    a = [1, 2, 3, 4];
+    c = [1, 2, 3, 4];
+    a[0] = b;
+    console.log(c);//[1,2,3,4]
+    console.log(a);//[9,2,3,4]
+
+    //7.
+    var ary = [1, 2, 3, 4]; // [0,2,3,4]
+    function ff(ary) {// ary = [1,2,3,4]
+        ary[0] = 0; // [0,2,3,4]
+        ary = [0]; // ary = [0]
+        ary[0] = 100; // [100]
+        return ary //
+    }
+    var s = ff(ary);
+    console.log(ary);// [0,2,3,4]
+    console.log(s); // [100]
+
+    //  8.
+    var a = 10, b = 11, c = 12;
+    function test(a) {
+        a = 1;
+        var b = 2;
+        c = 3;
+    }
+    test(10);
+    console.log(a);//10
+    console.log(b);//11
+    console.log(c);//3
+
+    // 9
+    var fs = "hello";
+    (function (fs) { //'hello'  var fs
+        console.log(fs);// 'hello'
+        var fs = fs || "world";
+        console.log(fs);// 'hello'
+    })(fs);
+    console.log(fs);// 'hello'
+
+    // 10
+    var a = 9;
+    function ss() {
+        a = 0;
+        return function (b) {
+                    return b + (a++)
+               }
+    }
+    var f = ss();
+    var m = f(5);
+    console.log(m);
+    var n = ss()(5);
+    console.log(n);
+    var x = f(5);
+    console.log(x);
+    console.log(a);
+
+    //10
+    console.log(getA);
+    if("a" in window){
+    var a="1";
+    function getA(a) {
+            a=a||this.a;
+            console.log(a);
+    }
+    getA(a);
+    }
+
+    ----
+
+    //11
+    var a=2;
+    var obj1={
+        a:1,
+        fn1:(function (a) {
+                this.a=a;
+                a++;
+            return function () {
+            this.a=a++;
+            console.log(a);
+    }
+    })(a)
+    };
+    obj1.fn1();
+    var fn1=obj1.fn1;
+    fn1();
+
+    //12
+    f = function () {return true;};
+    g = function () {return false;};
+
+    var h = (function () {
+        // function g = AAFF00
+        if (g() && [] == ![]) {
+             f = function () {
+                  return false;
+              };
+            return  console.log(f()) // FALSE
+        }
+        function g() {
+            return true;
+        };
+    })();
+    console.log(h)
+    console.log(f());//FALSE
+    console.log(g());//FALSE
+
+</scirpt>

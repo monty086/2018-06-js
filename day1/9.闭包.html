@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 闭包：
+    * 保护机制：闭包是一种保护机制，保护里面是私有变量不受外界的干扰
+    * 保存机制：当前私有作用域中，有引用数据类型被外界所占有，导致当前作用域变成一个不销毁的作用域，里面的变量也就变成了不销毁的变量
+    *
+    *
+    * */
+    var a =2
+    function f() {
+        var a =1
+    }
+    f()
+
+    function fn() {
+        var a = 1 ;//2 3
+        return function () {
+            a++
+            console.log(a);
+        }
+    }
+    var f = fn();
+    f();//2
+    fn()()//2
+    f()//3
+</script>
