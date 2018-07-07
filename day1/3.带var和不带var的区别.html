@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 带var和不带var的区别
+    * 如果不带var 直接赋值相当于给全局对象window直接添加了一个属性且给它赋值
+    * 如果带var 在全局作用域下添加了一个变量，还给全局对象window增加了一个属性
+    * 注意：带var的可以不赋值，但是也相当于给全局对象window增加一个属性，不带var的必须赋值，否则会去全局对象window找这个属性，如果没有直接报错
+    * */
+
+    /*
+    console.log(a);// undefined
+    // console.log(b); // b is not defined
+    var a = 1 ;
+    //b
+    b=2; // window.b=2
+    console.log(alert());
+    console.log(b); // 2
+    */
+
+
+    var x;
+    y=1
+    console.log(y);// window.y
+    console.log(x);//
+
+   /* var a =1 , b=2, c=3 ; // 用逗号分隔的话，表示连var，【相当于省略了写var】
+    var a =1
+    var b=2
+    var c=3 */
+
+   /*var a =1 ; b=2; c=3; // 用分号来分隔，前面带var的属于变量，不带var相当于给全局对象window增加了一个属性
+    var a =1 ;
+    window.b =2 ;
+    window.c = 3;*/
+
+   var a = b =c =1 ; // 连等：带var的是一个变量，其他的不带var 相当于给全局对象window增加的属性
+    var a =1 ;
+    window.b =1 ;
+    window.c =1 ;
+
+
+</script>

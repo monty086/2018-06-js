@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 变量提升
+    * 定义：变量的提前声明
+    * js可以再浏览器中运行，是因为浏览器给js提供了赖以生存的环境，这个环境就是作用域
+    * 作用域分为全局作用域和私有的作用域
+    * 全局作用域：浏览器一打开就形成了全局的作用域
+    * 私有作用域：函数执行的时候会形成一个私有的作用域
+    * 块级作用域：除了私有作用域和对象以外{}包裹的作用域都是 块级的作用域
+    * 变量提升的阶段：作用域形成之后，代码加载之前，浏览器会对带var和function关键字进行声明和定义，带var只声明不定义，带function关键字的声明加定义
+    *
+    *
+    *
+    * */
+    console.log(a);
+    console.log(f);
+    console.log(fn);
+    var a  =1 ;
+    function f (){
+        console.log(a);
+    }
+    var fn = function () {
+
+    }
+
+    f1() // undefined =>5  5 5
+    function f1() {console.log(1)}
+    f1() // 5 5 5
+    function f1() {console.log(2)}
+    f1=function () {}
+    function f1() {console.log(3)}
+    f1() // f 5 f
+    var f1 = 2;
+    f1() //2=>报错
+    function f1() {console.log(4)}
+    f1()
+    function f1() {console.log(5)}
+</script>

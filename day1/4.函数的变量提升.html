@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+    /*
+    * 函数的变量提升：
+    * function 关键字
+    * 1. =号右边的不进行变量提升，变量提升只发生在=号左边
+    * 2. 函数当作参数的时候，不进行变量提升
+    * 3. 自执行函数不会进行变量提升
+    * 4. 条件判断中的函数：在条件判断之前，带var和带function都是只声明不定义，当条件判断成立以后，第一事件给函数赋值，条件不成立，判断体就不执行了，结合了es6的块级作用域
+    * 5. 在函数当中，return 右边的代码不进行变量提升，return下面的会进行变量提升
+    * */
+    console.log(fn); // f()
+    console.log(fn()); // undefined
+    console.log(f); // undefined
+    function fn(){   // 函数声明式 ，通过function关键字来申明的，声明+定义都完成了
+        console.log(f);
+    }
+
+    //console.log(f2); // f2未定义
+    var f = function f2 () {} // 函数表达式,这种方式创建的函数会被推崇，es6的箭头函数也是函数表达式的方式创建
+    console.log(f()); // 匿名函数
+
+    // console.log(fn);// fn未定义
+    box.onclick = function fn () { // 元素上的事件所对应的函数同样不进行变量提升
+    }
+    console.log(f2);// f2 未定义
+    setTimeout(function f2 () { //函数为参数，不进行变量提升
+    },13)
+
+    alert(function f3() {
+
+    })
+
+    // 自执行函数，不会变量提升
+    console.log(fn8)
+    (function fn8() {
+
+    })()
+    (function(){}());
+    !function fn8() {}();
+    +function fn8() {}();
+    ~function fn8() {}()
+
+    // 条件判断中的函数之变量提升
+    console.log(c);
+    console.log(f1);
+    if('c' in window){
+        var c =2
+        function f1() {
+            console.log(c);
+        }
+    }
+    f1()
+
+    // return
+    function f3() {
+        // 私有变量：var function 形参
+        console.log(f4()); // AAFF00
+        console.log(a); // undefined
+        // console.log(f2); // 不会进行变量提升
+        return function f2() {
+
+        }
+        function f4() { // AAFF00
+            console.log(f3);
+        }
+        var a = f4
+    }
+    f3()
+
+
+</script>
