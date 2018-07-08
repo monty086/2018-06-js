@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 原型模式
+    * 在js中
+    * 函数：
+    * 普通函数、 类【自定义类和内置类】、 函数类的实例
+    *
+    * 对象：
+    * 普通对象 【对象数据类型】
+    * 构造函数 new 出来的一个实例 也是一个对象
+    * ///////
+    * 类上面的原型也是一个对象
+    * 函数也是一个对象 【万物皆对象】
+    *
+    * */
+
+    /*
+    * 学习原型模式需要记住三句话：
+    * 1. 所有的函数都天生自带一个属性，叫做prototype【原型】，它是一个对象，【既然是对象，那么就是一个堆内存】;
+    * 2. 所有类的原型上面【就是开辟的这个堆内存】，都天生自带一个属性，叫做constructor【构造函数】，它指向当前类本身
+    * 3. 所有的对象天生自带一个属性__proto__,它指向当前所属类的原型
+    *
+    *
+    * */
+
+    function People (name){
+        let age = 8 ;
+        this.name = name ;
+        this.age = age;
+        // this.say =function () {
+        //     console.log(this);
+        // }
+    }
+    People.prototype.say =function () {
+        console.log(this);
+    }
+    let person1 = new People('zf')
+    let person2 = new People('zhufeng')
+    // person1属于People类
+    // __proto__指向类 People的原型prototype
+    console.log(person1.__proto__ == People.prototype);
+
+    console.log(person1.say == person2.say);
+
+    console.log(person1.speak);
+
+    /*
+    * 原型链
+    * 定义：一个实例要找属性，优先会去找自己的私有属性，如果自己的私有属性没有的话，会通过__proto__找到自己所属类的原型上【公有属性】，如果公有属性还没有，继续通过__proto__找到自己所属类的原型知道Object【基类】的原型上，一直找到基类还没有的话，直接返回undefined
+    *
+    * */
+</script>

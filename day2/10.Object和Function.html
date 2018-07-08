@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * Object类  和 Function 类
+    * Function 类 ：
+    * 所有的类都是通过函数的方式来创建,由此可以得知，所有的类【包括基类Object】都是函数类的一个实例，
+    * Object 类
+    * 万物皆对象，js中任何数据类型都可以通过__proto__找到基类Object
+    * 由此可以得知：函数也是一个对象
+    *
+    * */
+    // function Function(){
+    //
+    // }
+    // new Function()
+    // function Object (){
+    //
+    // }
+
+    /*function  Number (){}
+    function  String (){};
+    ...*/
+
+    /*
+    *
+    * instanceof ： 判断一个实例是否属于一个类
+    * constructor ：通过实例来掉用这个方法，指向当前类本身
+    *
+    * */
+
+    console.log(Number instanceof Function);
+    console.log(String instanceof Function);
+    console.log(Object instanceof Function);
+
+    var ary = [1,2,4];
+    console.log(ary instanceof Object);
+    console.log(Array instanceof Object);
+    console.log(Function instanceof Object);
+
+</script>

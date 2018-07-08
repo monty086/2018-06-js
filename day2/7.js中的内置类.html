@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * js 中的内置类
+    * 在js中任何的数据类型都有它所属的类，除了null和undefined
+    * Number String Boolean Object Array RegExp Function Date ... Set Map
+    * 类的话首字母都是大写
+    * 类执行的通过 new 来执行
+    *
+    * Object 对象类，被称为基类 ，任何数据类型都可以通过__proto__【原型链】 找到基类 Object
+    *
+    *
+    * */
+
+    /*function  Number () {
+        ...
+    }*/
+
+    // 字面量方式的形式来创建的
+    var num = 1 ;
+    // 通过实例化的方式来创建
+    // 通过实例化创建出来的值，它是用对象包裹的，和字面量方式的创建表现形式不同而已，功能方法都一样
+    // 基本数据类型通过实例话创建
+    var num = new Number(1)
+    console.log(typeof num); // 检测数据类型
+    var boo = new Boolean(true);
+    var str = new String('1')
+
+    // 引用数据类型方式创建
+    var ary = new Array('1')
+    var obj = new Object({name:'zf'})
+    var fn = new Function('a','b','return 1')
+    // 如果参数只有一个的话，这个参数就属于函数体中的内容，如果是2个或者2个以上的话，最后一个是函数体，其他的都是形参
+
+    function fn(a,b) {
+        return 1
+    }
+
+</script>

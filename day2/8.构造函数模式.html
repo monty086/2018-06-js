@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * js 中的类除了内置类还有自定义类
+    * 构造函数
+    * 定义：当一个函数通过 new 关键字来执行的时候，这个函数就不是普通函数了，它是一个构造函数，也是一个自定义类，当前的函数名，就是类名，这个函数的返回值就是类的实例
+    *
+    * 为了让构造函数和普通函数有一个区别，我们建议写构造函数首字母大写【类名】
+    *
+    * 构造函数执行的时候，如果没有参数的时候，小括号可以不用写
+    *
+    * 注意：一般情况下我们写业务逻辑不会用到构造函数，但是在封装库、框架、插件以及组件的时候会用到构造函数模式
+    *
+    * */
+    function Fn() {
+
+    }
+    //fn()
+    /*let f = new Fn();
+    function People(a) {
+        console.log(a);
+        this.a=a
+    }
+    let person1 = new People('zf')
+    let person2 = new People()
+    console.log(person1 == person2);*/
+    // 普通函数的执行过程
+    /*
+    * 1. 形成一个私有的作用域
+    * 2. 形参赋值
+    * 3. 变量提升
+    * 4. 代码从上到下执行
+    * 5. 判断当前作用域是或否销毁
+    *
+    * */
+    // 构造函数的执行过程
+    /*
+    * 1. 形成一个私有的作用域
+    * 2. 形参赋值
+    * 3. 变量提升
+    * 4. 浏览器会创建一个对象【开辟一个新的堆内存】，将这个对象指向了this【堆内存指针指向了this】this就是实例
+    * 5. 代码从上到下执行
+    * 6. 判断当前构造函数是否有return，如果没有return默认将实例返回，如果有return：【如果return的是基本数据类型，对实例没有影响；如果是引用数据类型，那么实例就是该引用数据类型】
+    *
+    *
+    * */
+
+    function People(b) {
+        var a =8 ;
+        this.name = b;
+        this.age = a
+        this.say = function () {
+
+        }
+    }
+    let person1 = new People('zf');
+    let person2 = new People('zhufeng')
+    console.log(person1.say == person2.say);
+    console.dir(person1)
+
+    /*
+    * 私有属性：
+    * 在构造函数中，给this添加属性值和方法，都属于当前实例的私有属性
+    * 公有属性：
+    * 当前实例通过__proto__找到所有的属性和方法都是属于当前实例的公有属性
+    * 补充：实例想要调取公有属性，直接.就可以调取【底层就是通过__proto__去找这个属性】
+    * */
+
+    // 用 in 这种方式来判断 当前属性名【公有属性+私有属性】是否属于这个对象
+    console.log('hasOwnProperty' in person1);//
+
+    // Object 类 提供一个 hasOwnProperty方法,这个方法判断当前属性是否是该实例的【私有属性】；返回值也是布尔值
+    console.log(person1.hasOwnProperty('age'));//true
+    console.log(person1.hasOwnProperty('valueOf'));//false
+
+    // 自已封装一个方法，判断当前属性名是否是当前实例的一个公有属性 hasPubProperty
+    person1.__proto__.hasPubProperty = function (str) {
+        // 判断参数值是是当前实例的一个属性
+        // 判断是否是当前实例的一个私有属性，且取反
+        return  str in this && !this.hasOwnProperty(str)
+        /*if(str in this){
+            if(!this.hasOwnProperty(str)){
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }*/
+        // if(true){alert(1)} true && alert(1)
+    }
+    person1.hasPubProperty('a')
+
+
+
+</script>
