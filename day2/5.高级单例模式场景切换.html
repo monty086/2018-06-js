@@ -52,3 +52,84 @@
 <div id='page3'></div>
 </body>
 </html>
+<script>
+    let page1 = (function(){
+        let page = document.getElementById('page1');
+        let p = document.getElementsByTagName('p')[0];
+        function pageRender(){
+            page.style.display = 'block';
+            return this
+        }
+
+        function textRender(){
+            let str = 'http://www.zhufengpeixun.com';
+            let i = 0
+            let timer = setInterval(()=>{
+                input.value+=str[i++]
+                if(i==str.length){
+                    clearInterval(timer)
+                    p.style.color='red';
+                    setTimeout(()=>{
+                        page.style.display='none';
+                        page2.pageRender().textRender()
+                    },1000)
+
+                }
+            },150)
+            return this
+        }
+        function init(){
+            this.pageRender().textRender()
+        }
+
+        return {
+            init,
+            pageRender,
+            textRender
+        }
+
+    })()
+    let page2 = (function(){
+        let page = document.getElementById('page2');
+        function pageRender(){
+            page.style.display = 'block';
+            return this
+        }
+        function textRender(){
+            let i = 0 ,o =0;
+            let str = '欢迎大家来珠峰学习，不多说了，我要去跳转了...';
+            let timer = setInterval(()=>{
+                i>str.length-1?null:page.innerHTML += str[i++];
+                page.style.display='flex'
+                page.style.opacity = o+=0.05
+                if(o>=1 &&i>str.length-1 ){
+                    clearInterval(timer);
+                    setTimeout(()=>{
+                        page.style.display='none';
+                        page3.pageRender()
+                    },1500)
+
+                }
+            },250)
+            return this
+        }
+
+        return {
+            pageRender,
+            textRender
+        }
+    })()
+
+    let page3 = (function(){
+        let page = document.getElementById('page3');
+        function pageRender(){
+            let url = 'http://www.zhufengpeixun.com'
+            window.location.href=url;
+            return this
+        }
+        return {
+            pageRender
+        }
+    })()
+    page1.init()
+</script>
