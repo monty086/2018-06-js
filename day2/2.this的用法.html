@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    /*
+    * this 是一个关键字，它代表当前函数的执行主体,谁执行函数，执行主体this就是谁。
+    * this只能代表值，不能赋值
+    * this的代表值取决于使用的场景，场景不同，this值就不同
+    * this的用法
+    * 1. this在全局作用域下使用，它代表全局对象window
+    * 2. 自执行函数当中的this全部都是window
+    * 3. 函数作为参数的时候，一般情况下this都是window
+    * 4. 元素事件上的函数，this一般情况都是当前元素
+    * 5. 函数执行，看函数的执行主体前面是否有点，有点，点前面是谁this就是谁，没有点，this都是window
+    * */
+    var a = 1 ;
+    console.log(a);// 1
+    console.log(this.a); //
+
+    // 自执行函数
+    (function () {
+        console.log(this);// win
+        f(this)
+        return console.log(this)
+    })()
+    function f(n) {
+        console.log(n); // window
+    }
+    // 函数作为参数的时候
+    let ary = [1,2]
+    ary.forEach(function () {
+        console.log(this);// 2 win
+    },1)
+    // 其他情况，像forEach map ..第二个参数可以修改this指向
+    setTimeout(function () {
+        console.log(this); // win
+    })
+
+    // 点击事件中的this
+    box.onclick = function () {
+        console.log(this);// box
+        (function () {
+            console.log(this);
+        }())
+        f(this)
+    }
+
+    //
+    var obj = {
+        fn:function () {
+            console.log(this);
+        },
+        f:(function () {
+            return this.f
+        }())
+    }
+    obj.fn()// obj
+    let a = obj.fn;
+    a()// window
+    obj.f()  // 全局的f函数执行
+
+</script>
