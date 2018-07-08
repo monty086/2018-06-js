@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 高级单例模式：
+    * 定义：在高级单例模式当中，我们不只会把一个对象赋值一个命名空间，我们会让它先执行一个自执行函数，【就形成了一个闭包，一个不销毁的作用域】在自执行函数中，返回一个对象给这个命名空间
+    * 好处：我们可以在这个私有的作用域中，创建很多属性和方法，仅需要把我们使用的属性和方法暴露在这个对象当中即可
+    *
+    *
+    * */
+    let xiaozhao = (function () {
+        var name = 'jd';
+        function login() {
+            console.log('这是我给jd起的名字叫'+name)
+            return this
+        }
+        function home() {
+            console.log('这是我写的jd主页')
+        }
+        function init() {
+            this.login().home()
+        }
+        return {
+            home,
+            login:login,// es6语法，在对象中，如果属性名和属性值相同的话，可以简写一个
+            init
+        }
+    })()
+    xiaozhao.init()
+</script>

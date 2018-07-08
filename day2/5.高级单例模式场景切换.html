@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,div{
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-size:14px;
+        }
+        #page1{
+            background: lightyellow;
+            text-align: center;
+            display: none
+        }
+        input{
+            width: 70%;
+            border:1px solid #666;
+            color:#666;
+            margin: 100px auto 0;
+            height:30px;
+        }
+        #page2{
+            opacity:0;
+            background: green;
+            text-align: center;
+            line-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            writing-mode: vertical-lr;
+            letter-spacing: 7px;
+            color:#fff;
+        }
+        #page3{
+            display: none;
+
+        }
+    </style>
+</head>
+<body>
+<div id='page1'>
+    <input type="text" id='input'>
+    <p>请等待页面即将跳转</p>
+</div>
+<div id='page2' style='display: none'></div>
+<div id='page3'></div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 设计模式
+    * 模块化开发：把一个项目按照页面或者功能分割成不同的任务，交给项目中不同成员进行开发，开发结束之后将代码合并到一起。这种开发模式叫做模块化开发；
+    * 多人协作开发出现的问题：变量名、函数名冲突;
+    * 为了防止全局变量的污染，我们可以选择闭包，但是只用闭包的方式是不完美的，我们需要搭配设计模式来进一步的实现项目的开发
+    *
+    * 单例模式：
+    * 表现形式：
+    * { name:xxx , age:function(){} }
+    *
+    * 定义：把描述同一功能的属性和方法放到一个对象【命名空间】中，这种设计模式叫做单例模式
+    *
+    * 在设计模式中，这个person1 不仅仅是一个对象名，它是一个命名空间，多个命名空间是相互独立的，互不干扰；
+    * 好处：不受全局变量的污染和干扰，并且可以相互调用方法
+    *
+    * 由来：单例模式的本质就是一个对象，它Object类上的一个实例，实例与实例之间互相不干扰，叫做单独的实例 ，简称‘单例’
+    * */
+
+    /*var name = 'jd';
+    var name = 'jd-login';*/
+
+    /*(function () {
+        var name = 'jd';
+        function fn() {
+
+        }
+    })()
+    (function () {
+        var name = 'jd-login';
+    })()*/
+
+    let person1 = {
+        name:'jd',
+        home:function () {
+            this.name;
+            person2.login()
+        }
+    }
+    let person2 = {
+        name:'jd-login',
+        login:function () {
+
+        }
+    }
+
+
+</script>
