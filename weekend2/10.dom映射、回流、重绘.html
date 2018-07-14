@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <ul id="ul">
+        <li id="first">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+</body>
+</html>
+<script>
+    let box = document.getElementById('box');
+    // 我们在js中拿到的这个元素对象，它身上天生自带了很多属性和方法
+
+    let p = document.createElement('p');
+    box.appendChild(p)
+    // 我们给box元素的末尾添加了p标签，浏览器发现box元素中多出一个p标签，它会开始进行计算【颜色，位置..】，然后对dom结构进行重新的渲染
+    console.log(box.children);
+
+    /*
+    * dom映射
+    * js中获取到的元素对象和dom中元素标签，一一对象，有映射关系，不管你进行删除、添加、修改，浏览器都会对dom结构进行重新的渲染
+    * 重绘
+    * 在js中对元素对象，进行样式【不包括位置改变】改变，浏览器检测到结构发生变化，也会其进行渲染 ；对dom性能耗费低
+    *
+    * 回流
+    * 在js中，对元素，增加、删除，以及修改，导致dom树结构发生改变，浏览器会时时监控dom情况，一旦发生改变会重新进行计算+渲染，这种方式对dom性能消耗高
+    *
+    * */
+    var ul = document.getElementById('ul');
+    var first = document.getElementById('first');
+    ul.appendChild(first)
+    /*
+    * 当父元素操作子元素的时候，发现页面的元素标签和要操作的元素，我们就让该元素进行移动，因为js的元素对象和dom中的元素标签存在映射关系。导致操作js元素对象，dom也发生变化
+    *
+    * */
+
+
+</script>

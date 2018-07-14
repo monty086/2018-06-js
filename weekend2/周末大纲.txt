@@ -1,0 +1,17 @@
+函数的三种身份
+call apply bind
+封装call方法
+call.call.call
+解构赋值
+剩余运算符、扩展运算符、展开运算符
+箭头函数
+
+商品排序
+dom映射
+回流和重绘
+sort排序
+json
+ajax
+商品排序案例
+
+异常捕获

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * ajax :  async javascript and xml
+    *
+    *
+    * */
+    var data = null;
+    // ajax请求四部曲
+    // 1 创建了一个ajax对象
+    var xhr = new XMLHttpRequest();
+    // 2. 打开一个地址，进行配置请求
+            // 1. 请求方式【method】：get、 post、 put、delete、head 、 option...
+            // 2. 请求地址【url】：api地址，url地址
+            // 3. 是否异步 async?： true=》异步 false 同步
+    xhr.open('get','周末大纲.txt',false);
+    // 3. 监听状态请求
+    xhr.onreadystatechange = function(){
+        // 如果ajax的readyState状态变成 4，证明 ajax已经操作结束，并且浏览器已经返回相对应的内容
+        // xhr.status = 200 , 浏览器接收你的ajax请求，并成功返回数据给你。
+        if(xhr.readyState == 4 && xhr.status==200){
+            data = xhr.responseText
+        }
+    }
+    // 4. 发送请求
+    xhr.send()
+
+
+    console.log(data);
+
+    [{age:10},{age:2}].sort(function (a, b) {
+        return a.age - b.age
+    })
+    //[{age:2},{age:10}]
+
+</script>

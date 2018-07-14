@@ -1,0 +1,155 @@
+ //1.
+    console.log(a);
+    var a = 13;
+    function fn() {
+        console.log(a);
+        var a = 1;
+    }
+    fn();
+    console.log(a);
+
+    //2.
+    console.log(a);
+    var a = 13;
+    function fn1() {
+        console.log(a);
+        a = 1;
+    }
+    console.log(a);
+
+    //3.
+    //console.log(a);
+    a = 13
+    function fn() {
+        console.log(a);
+        a = 1;
+    }
+    fn();
+    console.log(a);
+
+    //4.
+    var foo = 1;
+    function bar() {
+        if (!foo) {
+            var foo = 10
+        }
+        console.log(foo);
+    }
+    bar();
+
+    //5.
+    function f5() {
+        f=ff();
+        return f;
+        function ff() {
+            return "f" in window;
+        };
+        var f;
+    }
+    console.log(f5());
+
+    //6.
+    var a = b = c = [1, 2, 3, 4];
+    b = 9;
+    a[1] = 0;
+    console.log(b[0]);
+    a = [1, 2, 3, 4];
+    c = [1, 2, 3, 4];
+    a[0] = b;
+    console.log(c);
+    console.log(a);
+
+    //7.
+    var ary = [1, 2, 3, 4];
+    function ff(ary) {
+        ary[0] = 0;
+        ary = [0];
+        ary[0] = 100;
+        return ary
+    }
+    var s = ff(ary);
+    console.log(ary);
+    console.log(s);
+
+ //  8.
+    var a = 10, b = 11, c = 12;
+    function test(a) {
+        a = 1;
+        var b = 2;
+        c = 3;
+    }
+    test(10);
+    console.log(a);
+    console.log(b);
+    console.log(c);
+
+// 9
+    var fs = "hello";
+    (function (fs) {
+        console.log(fs);
+        var fs = fs || "world";
+        console.log(fs);
+    })(fs);
+    console.log(fs);
+    var a = 9;
+    function ss() {
+        a = 0;
+        return function (b) {
+            return b + (a++)
+        }
+    }
+    var f = ss();
+    var m = f(5);
+    console.log(m);
+    var n = ss()(5);
+    console.log(n);
+    var x = f(5);
+    console.log(x);
+    console.log(a);
+
+//10 
+console.log(getA); 
+if("a" in window){ 
+    var a="1";
+    function getA(a) { 
+        a=a||this.a;
+        console.log(a);
+    }
+    getA(a);
+}
+
+----
+
+//11
+var a=2;
+var obj1={
+    a:1,
+    fn1:(function (a) {
+        this.a=a;
+        a++;
+        return function () {
+            this.a=a++;
+            console.log(a);
+        }
+    })(a)
+};
+obj1.fn1();
+var fn1=obj1.fn1;
+fn1();
+
+//12
+f = function () {return true;};
+g = function () {return false;};
+(function () {
+  if (g() && [] == ![]) {
+    f = function () {
+      return false;
+    };
+    return  console.log(f())
+  }
+  function g() {
+      return true;
+    };
+})();
+console.log(f());
+console.log(g());

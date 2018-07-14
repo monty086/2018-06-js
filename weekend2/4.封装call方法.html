@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+   * 封装call方法
+   * 1. 改变call前面函数中的this
+   * 2. 让call前面的函数执行
+   * 3. 将第二个以及第二个以后的参数依次传给call前面的函数，作为参数
+   *
+   * */
+
+    // 改变函数中的this
+    function fn() {
+        console.log(this);
+    }
+    /*fn()// this =>window
+    let obj = {name:'zf'};
+    // fn中的this变成obj
+    //fn.call(obj)
+    obj.a = fn // {name:'zf',a:function fn(){}}
+    obj.a() // this = obj*/
+
+
+    fn.call(1) // 第一个参数是基本数据类型，this变成了实例化的值，如果是引用数据类型，this不会发生改变
+    new Number('1')//
+
+    console.log(new Function());
+    console.log(new Function('return a+b'));
+    // 如果参数只有一个的情况下，就是当前函数类实例化的一个函数的函数体
+    console.log(new Function('a','b','return a+b'));
+    // 如果参数是2个或者2个以上，最后一个参数是函数体中内容，除了最后一个参数其他的参数都是形参
+
+    let ary = [1,2,5];
+    console.log(ary.toString());// '1,2,5'
+
+    function f2 (n,m,y){
+        console.log(n); // 1
+        console.log(m); // 2
+        console.log(y); // 5
+    }
+    f2(ary)
+    f2(1,2,5)// f2('1,2,5')
+    //eval 将字符串转换成js代码
+    console.log(ary.toString()); //'1,2,5'
+    console.log('f2(' + ary.toString() + ')');
+    //'f2(' + '1,2,5' + ')' =>  'f2(1,2,5)'
+    eval('f2('+ary.toString()+')') // eval('f2(1,2,5)')
+
+    Function.prototype.call=function (obj) {
+        let ary = [];
+        for (let i = 1; i < arguments.length ; i++) {
+            ary.push(arguments[i])
+        }
+        // obj null==undefined  不传  undefined
+        if( obj==undefined){
+            //this()
+            eval('this('+ary.toString()+')')
+        }else{
+            // f3 => this =》this就是f3
+            // 让f3中的this 变成 obj
+
+            obj.__proto__.fn = this; //
+            console.log(ary);
+            //obj.fn()// 就是让this【f3】执行，f3中this就是obj，
+            //eval('obj.fn('+ary+')')
+            //console.log(eval(`(obj.fn(${ary}))`));
+            // obj.fn(...ary);
+            // new Function(obj,`obj.fn(${ary})`)(obj)
+            delete obj.__proto__.fn
+        }
+
+    }
+    let f3 = function (n,m,y) {
+        console.log(this);// window
+        console.log(n, m, y);
+    }
+    /*f3.call()
+    f3.call(null)
+    f3.call(undefined)*/
+    // f3.call(undefined,2,3,5)
+    let obj = {name:'zf'}
+    f3.call(obj,'a',3,5)
+    //Function.prototype.call()
+
+
+</script>

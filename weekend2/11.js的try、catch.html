@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * try、catch 进行错误信息拦截
+    *
+    * */
+
+    //console.log(a);//ReferenceError: a is not defined
+    try{
+        console.log(a)
+        fn()
+    }catch (e) {
+        // alert('哎呦，你的网络有问题哦！！')
+        console.error('哎呦，你的网络有问题哦！！')
+        console.info('哎呦，你的网络有问题哦！！')
+        console.dir(e); // 捕获到try执行的拦截到的错误信息
+    }finally {
+        // 不管try作用域中的代码执行好于坏，finally都会执行
+    }
+    console.log('我想继续执行下去')
+
+    // 手动给抛出一个错误异常
+    throw new Error('我不想....')
+    console.log(1);
+    throw new ReferenceError('我是引用错误')
+    /*
+    ReferenceError // 引用错误，
+    SyntaxError // 语法错误
+    TypeError // 类型错误
+    RangeError // 范围错误 =》 堆栈溢出
+    ...
+    */
+
+</script>

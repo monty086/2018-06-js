@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * JSON是一种数据格式，不是数据类型,同时它也是window上的一个属性
+    * JSON分为 JSON字符串和JSON对象
+    * JSON对象和普通对象功能一样，只是写法上有一些不同【属性名和属性值加双引号】。
+    * 用处：JSON的使用范围非常的广泛，现在一般前后端交互用来传输数据，依然使用的JSON格式
+    *
+    * window.JSON
+    * 方法：
+    * JSON.parse : 将JSON字符串转换成JSON对象
+    * JSON.stringify : 将JSON的对象转换成JSON的字符串
+    * */
+    let obj = {name:'zf'};
+    obj = {"name":"zf"} // JSON对象
+    //obj = '[{"name":"zf"}]'  // JSON字符串
+
+
+    // json对象转换成json字符串
+    let str = JSON.stringify(obj);
+
+    // json字符串转换成json对象
+    let obj2 = JSON.parse(str);
+    console.log(obj2);
+
+    // 深拷贝
+
+    let newObj = {name:'zf',age:8};
+    let oldObj = newObj;
+    oldObj.age = 9;
+    console.log(newObj.age);// 9
+    // 低耦合 高内聚 ：减少代码冗余，提高代码重复使用的利用率
+    //let Obj3 = {name:'zf',age:8};
+    let Obj3  =  JSON.parse(JSON.stringify(newObj))
+    // 这种方式实现了深拷贝
+    Obj3.age =1 ;
+    console.log(Obj3);
+    console.log(newObj.age);
+
+    let {...obj4} = newObj;
+    console.log(obj4);
+
+
+</script>

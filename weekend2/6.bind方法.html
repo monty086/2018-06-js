@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    /*
+    * bind方法可以改变this，返回一个新函数【改完this后的函数】，但是函数不执行；
+    *
+    * */
+    function fn(){
+        console.log(this);
+    }
+    fn();
+    let f = fn.bind(null)
+    f()
+    console.dir(f)
+
+    let f2 = function () {
+        console.log(this);
+    };
+    setTimeout(f2.bind(box),1000)
+    box.onclick = function () {
+        console.log(this);// box
+        f2() // this = window
+        f2.call(this)
+    }
+</script>

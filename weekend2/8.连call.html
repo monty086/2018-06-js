@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * call.call.call
+    *
+    * */
+
+    function fn(n,m) {
+        console.log(this);
+        console.log(n, m);
+    }
+    console.log(fn.call);
+    // 让我们封装的call方法执行call方法
+    fn.call.call('a',1,2,3)
+    // 第一个参数：改变call前面函数【fn.call】中的this
+    // fn.call中的this变成了‘a’
+
+    // 第二步，让call前面函数【fn.call】执行
+    // 但是fn.call方法中的this，被我们改成‘a’ ;而且fn.call中this执行了。所以就是‘a’执行；【但是字符串a不能执行，所以会报错】 ‘a’ is not a function
+
+//-------------------------------------------------------------
+    let f4 = function(n,m){console.log(n,m)}
+    fn.call.call(f4,1,2,3)
+    // 第一步：第一个参数改变call前面函数【fn.call】中的this
+    // fn.call中的this变成了‘f4’
+
+    // 第二步，让call前面函数【fn.call】执行
+    // 让fn.call执行，碰到this();但是fn.call方法中的this，被我们改成‘f4’ ; 就是f4(1,2,3)
+    // f4中的this变成了 {1}
+    // f4后面的参数 2，3相当于实参依次传给 f4当作形参
+
+    // 两个或两个以上的call方法，直接让第一个参数执行，第二个参数用来改变第一个参数的this，后面的参数用来给第一个参数传参
+    fn.call.call.call(f4,1,2,3,5)
+    // f4.call(1,2,3,5)
+
+
+
+    //fn.call.call.call.call.call('a',1,2,3);
+
+</script>

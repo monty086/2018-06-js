@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 函数的三种身份
+    * 1. 普通函数
+    * 2. 类【自定义类和内置类】
+    * 3. 函数类的一个实例
+    *
+    * caller：调用者，如果函数在全局调用的话，caller值是null,否则当前函数在哪调用的，则caller就是谁
+    * callee: 它是arguments的属性，指向当前的函数本身
+    * */
+
+    function fn(a) {
+        a =2
+        console.log(arguments); //
+        console.log(fn.caller); // 调用者
+        console.log(fn.name);
+        console.log(arguments.callee);// 当前函数
+    }
+    //console.dir(fn)
+    function f (){
+        fn(1,2,4)
+    }
+    f();
+
+
+    /*function num (n){
+        // if(n<=0){return 0}
+        //return n+num(n-1)
+        return n+ arguments.callee(n-1)
+        return n+ n+ arguments.callee(n-1)
+        return n+ n+ n+ arguments.callee(n-1)
+        // 100+99+98+...+0
+    }
+    num(100)*/
+
+    /*
+    * 函数上的公有方法和属性，作为一个函数都可以进行调用
+    *
+    * */
+    console.dir(Function.prototype)
+</script>

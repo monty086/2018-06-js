@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * call方法
+    * 1. 改变call前面函数中的this
+    * 2. 让call前面的函数执行
+    * 3. 将第二个以及第二个以后的参数依次传给call前面的函数，作为参数
+    *
+    * */
+    function fn(n,m) {
+        //'use strict';// 严格模式
+        console.log(this);
+        console.log(arguments);
+    }
+    let obj = {name:'zf'}
+    //fn.call(obj)
+    fn.call() // this => window  严格模式 this =>undefined
+    fn.call(null) // this=> window  严格模式 this =>null
+    fn.call(undefined) // this=> window 严格模式 this =>undefined
+
+    fn.call(obj,[],'12')
+</script>

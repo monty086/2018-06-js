@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * apply 和 call 执行的相同，只不过第二个参数是一个数组；同样也可以改变this
+    *
+    * */
+    let ary = [2,3,4,5];
+    Math.max(1,2,3,5);
+    Math.max.apply(null,ary);
+
+    function f() {
+        Math.max.apply(null,arguments);// 通过arguments和apply进行集合，实现取实参的最大值
+    }
+    f(1,2,3,4);
+
+    // 取最大值
+
+    ary.sort(function (a,b) {
+        return b-a
+    })[0];
+
+    // 假设法
+    let max = 0 ;
+    for (let i = 0; i <ary.length ; i++) {
+        if(ary[i]>max){
+            max = ary[i]
+        }
+    }
+    console.log(max);
+
+</script>

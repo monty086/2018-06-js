@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Fn(){
+        //私有属性
+    }
+    Fn.prototype = {}
+    // f的constructor 丢失
+    // f.__proto__.__proto__ ==> Object.prototype
+    let f = new Fn;
+    f.constructor
+
+    Fn.prototype.x = function () {
+
+    }
+    Fn.prototype.y = function () {
+
+    }
+    let obj = {x:function () {
+
+        },y:function () {
+
+        }}
+    Fn.prototype.constructor = Fn
+</script>

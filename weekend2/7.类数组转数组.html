@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    var lis = document.getElementsByTagName('li');
+
+    console.log(lis);
+    // 类数组转数组
+    // 通过一个新数组循环接收
+    var ary = [] ;
+    for (let i = 0; i < lis.length ; i++) {
+        ary.push(lis[i])
+    }
+    console.log(ary); //[li,li,li]
+
+    // 通过数组类上的原型上的方法，通过改变其中的this，来实现将类数组转变数组
+    [].slice.call(lis)
+    Array.prototype.slice.call(lis);
+
+    //通过 数组类上的from方法来改变
+    console.log(Array.from(lis));
+
+    // 通过__proto__改变它的原型【ie不兼容】
+    lis.__proto__ = [].__proto__= Array.prototype;
+
+    // 通过es6 的扩展运算符来实现
+    let [...ary] = lis;
+    console.log(ary);
+
+
+</script>
