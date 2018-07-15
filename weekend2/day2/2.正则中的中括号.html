@@ -2,9 +2,134 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
 </html>
+<script>
+    /*
+    * 正则中的中括号
+    * 定义：表示中括号中的任意一个字符
+    * 1. 在中括号中，\w \d \s 依然代表具有特殊含义的字符
+    * 2. 在中括号中， 特殊元字符都带表它本身的含义，比如说 . ? * ...
+    * 3. 在中括号中， - 表示范围的意思
+    * */
+   /* var reg = /12|89/
+    console.log(reg.test('18'));//false
+    console.log(reg.test('19')); //false
+    console.log(reg.test('189'));
+    console.log(reg.test('2189'));*/
+   /* var reg = /^12|89$/
+    console.log(reg.test('18'));//false
+    console.log(reg.test('12'));// true
+    console.log(reg.test('189'));// true
+    console.log(reg.test('129'));// true
+    console.log(reg.test('19')); // false
+    console.log(reg.test('2189')); // true*/
+
+   /* var reg = /^(12|89)$/
+    console.log(reg.test('189')); //false
+    console.log(reg.test('129')); // false
+    console.log(reg.test('18')); // false*/
+
+    /*var reg = /^[abc]$/;
+    console.log(reg.test('zhufeng'));
+    console.log(reg.test('azhuafebncgc'));
+    console.log(reg.test('a'));*/
+
+    // var reg = /[\b]/;
+    // console.log(reg.test('zhufeng2018'));
+
+    /*var reg = /\b/;
+    console.log(reg.test('zhufeng'));
+    up.classList.add('bg')
+    up.className = 'up bg'*/
+
+
+   /* var reg = /\w\d/;
+    console.log(reg.test('99'));*/
+
+   /* var reg = /\\d/;
+    console.log(reg.test('\\d'));*/
+
+   /* var reg = /[?*$&.]/;
+    console.log(reg.test('a'));
+    console.log(reg.test('.'));*/
+
+   /*var reg = /^[a-z]$/;
+   var reg = /^[0-9a-zA-Z]$/;
+    console.log(reg.test('acd'));
+    console.log(reg.test('m'));
+    console.log(reg.test('MOP'));//*/
+
+   // 匹配一个字符串前面时候有空格或者后面是否有空格【正则匹配】
+    var reg = /^ +| +$/
+    reg.test('up bg')
+    reg.test('  a   ')// true
+    // 检测一个字符是否有空格 有的话清除空格
+    '  a   '.trim() // trimLeft trimRight
+
+    // 匹配一个13-78之间的一个数字【年龄】【正则匹配】
+    // /1[3-7]8/
+    // 13-19 20-69 70-78
+    // 10-59  1-5 \d
+    var reg = /^(1[3-9])|([2-6]\d)|(7[0-8])$/
+    // 匹配一个 1949-2018  正则匹配
+    // 1949 - 1999  2000-2018
+    // (19 (49 |([5-9]\d)) | 20 ((0 \d ) | (1[0-8])))
+    var reg  = /^((19(49|([5-9]\d)))|(20((0\d)|(1[0-8]))))$/;
+
+    console.log(reg.test('1997'));
+    console.log(reg.test('20175'));
+    console.log(reg.test('2000'));
+    console.log(reg.test('1989'));
+    console.log(reg.test('19959'));
+    console.log(reg.test('1956'));
+
+    // 匹配一个数字 【整数 小数 正数 负数】
+    /*
+    *  5  -3  4.5  0.5  100.06
+    * */
+   /* var reg = /^-?(\d|[1-9]\d+)(\.\d+)?$/;
+    console.log(reg.test('100.005'));
+    console.log(reg.test('-0.5'));
+    console.log(reg.test('15.58'));
+    console.log(reg.test('-10.10000001'));
+    console.log(reg.test('1000'));
+    console.log(reg.test('0'));*/
+
+    // 正则的中括号
+    // 正则中的小括号 ：1 提高优先级 2 分组引用 3 分组捕获
+    // 正则捕获 exec ：
+    // 捕获成功： 返回一个数组
+    // 捕获失败 ： null
+    // 正则的懒惰性 /\d/  str = '123'每次捕获只捕获一位数字
+    // 解决正则的懒惰，/\d/ 后面加一个g ，全局捕获
+    // 正则的贪婪性  /\d+/ str = '123' 每次捕获把123全部都捕获出来。那是因为它有量词元字符+出现
+    // 解决正则的贪婪性：在量词元字符的后面加一个？ 每次只捕获一个
+    var reg = /\d{2,4}?/
+    var str = '1234'// 每次4个，
+    // 给正则加一个？每次只捕获2个
+    // match split replace search
+    var str = 'zhufeng2018';
+    var reg = /\d+/g
+    str.match(reg)
+    str.split(/\w/);
+    str.replace('2','1')
+    str.replace(/\d/,function () {
+
+    })
+    str.search(/\d/)//返回索引
+    //1.  url 解析
+    str= 'https://www.baidu.com/s?wd=d&rsv_spt=1&rsv_iqid=0xe3151c9700024c95&issp=1&f=3&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=0&rsv_sug3=3&rsv_sug1=1&rsv_sug7=100&prefixsug=d%2520&rsp=1&inputT=1380&rsv_sug4=1393'
+   // {wd:d,res_spt:...}
+
+    //2. 'css:500,js:1000,node:300,html:900'
+    // css大写 数字前面+￥
+    //{CSS:￥500,.....}
+
+
+    // 
+</script>
