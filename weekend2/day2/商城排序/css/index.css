@@ -1,0 +1,104 @@
+*{
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+ul{
+    list-style: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background: #dedede;
+    /*overflow: hidden;*/
+    font-size:14px;
+}
+.shop{
+    width: 1200px;
+    margin:20px auto;
+
+}
+.shop .header{
+    height: 50px;
+    background-color: #fff;
+
+}
+.shop .header span{
+    float: left;
+    line-height: 50px;
+    width: 100px;
+    text-align: center;
+}
+.shop .header a{
+    padding:0 15px;
+    line-height: 50px;
+    position: relative;
+    text-decoration: none;
+    color:#807c7f;
+}
+.shop .header a:hover{
+    color:red
+}
+.header i{
+    width: 0;
+    height: 0;
+    border:4px solid transparent;
+    position: absolute;
+    top:50%;
+    margin-top:-4px;
+    right:3px;
+}
+.header i.up{
+    border-bottom-color:#666;
+    margin-top:-9px;
+}
+.header i.up.bg{
+    border-bottom-color:red;
+}
+.header i.down{
+    border-top-color:#666;
+    margin-top:1px;
+}
+.header i.down.bg{
+    border-top-color:red;
+}
+/*产品列表*/
+.shopList{
+    margin: 20px auto;
+}
+.shopList li{
+    width: 210px;
+    padding:0 10px;
+    margin:0 10px 10px 0;
+    float: left;
+    background: #fff;
+}
+.shopList li img{
+    width: 100%;
+    margin-top:10px;
+}
+.shopList li p{
+    line-height: 30px;
+    color:#aaa;
+}
+.hot{
+    color:#e4393c !important;
+}
+del{
+    color: #c9c9c9;
+}
+li span{
+    line-height: 30px;
+    color:orangered;
+}
+.time{
+    color:green !important;
+}
+.shopList li:hover{
+    position: relative;
+    top:-5px;
+    box-shadow: 1px 2px 5px gray;
+}
+.shopList li:hover img{
+    transform: scale(1.1);
+}

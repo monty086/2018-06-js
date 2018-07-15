@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 正则：叫做正确的规则，它是专门用来处理字符串
+    * 创建一个正则：字面量的方式来创建 、构造函数的方式来创建
+    * 正则的组成：元字符和修饰符，两个斜杠中间包裹的都是元字符；斜杠后面是修饰符
+    * */
+    var reg = /123123/g;
+    /*
+    * 创建正则
+    * 字面量方式：这种方式创建简单、常用
+    * 构造函数方式:第一个参数是元字符，第二个参数是修饰符,一般通过这种方式类创建正则，我们可以传一个变量
+    *
+    * */
+    var reg = /\d/g;
+    var reg = new RegExp('\d','g')
+
+    /*
+    * 正则的方法：
+    * 正则的是一个内置类，它的类上有公有方法和属性，常用的有test和exec这两个方法
+    * test: 匹配=> 验证当前字符串中是否符合创建的正则，它的返回值是一个布尔值，匹配成功返回true，失败则为false
+    * exec:
+    *
+    * */
+    console.dir(RegExp.prototype);
+    var reg = /9/;
+    console.log(reg.test('9'));//用正则调用原型上的test方法，来对字符串进行验证。返回值是布尔值，匹配不成功都是false，匹配成功为true
+</script>
