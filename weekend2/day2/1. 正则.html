@@ -28,10 +28,39 @@
     * 正则的方法：
     * 正则的是一个内置类，它的类上有公有方法和属性，常用的有test和exec这两个方法
     * test: 匹配=> 验证当前字符串中是否符合创建的正则，它的返回值是一个布尔值，匹配成功返回true，失败则为false
-    * exec:
-    *
+    * exec: 捕获=> 验证当前字符串中是否符合创建的正则，验证成功，它会将匹配正则的字符串返回，验证不成功返回null
+    * 捕获成功返回一个数组，里面是捕获到的内容
     * */
     console.dir(RegExp.prototype);
     var reg = /9/;
     console.log(reg.test('9'));//用正则调用原型上的test方法，来对字符串进行验证。返回值是布尔值，匹配不成功都是false，匹配成功为true
+
+    var reg = /\d/  // \d 0-9任意一个数字
+     console.log(reg.exec('Whufeng2018'));
+    // 匹配成功，返回数组["2", index: 7, input: "zhufeng2018", groups: undefined]
+    //console.log(reg.exec('zhufeng')); // 没有匹配成功返回一个null
+
+    /*
+    * 正则的组成部分
+    * 修饰符和元字符组成，
+    * 元字符：特殊元字符和量词元字符
+    *
+    * */
+
+    // 一般常用的修饰符
+    /*
+    i：ignoreCase =>忽略大小写
+    m：multiLine => 多行匹配
+    g：global => 全局匹配
+    */
+
+    // 一般常用的量词元字符
+    /*
+    * ：匹配0到多次
+    + ：匹配1到多次
+    ? ：匹配0到1次  【有或没有】
+    {n} ：匹配n次
+    {n,} : 匹配n到多次
+    {n,m} : 匹配n到m次
+    */
 </script>
