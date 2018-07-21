@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        #box{
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            border:1px solid red;
+        }
+        ul li{
+            width: 100px;
+            height: 100px;
+            float:left;
+            line-height: 100px;
+            text-align: center;
+            background: #cccccc;
+        }
+        ul li.active{
+            background: red;
+        }
+        #box>div{
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            float: left;
+            background: #aaaaaa;
+            display: none;
+        }
+        #box>div.active{
+            display: block;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="active">a</div>
+    <div>b</div>
+    <div>c</div>
+</div>
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<!--
+<script>
+    var box  = document.getElementById('box');
+    var buttons = document.getElementsByTagName('li');
+    var contains = box.getElementsByTagName('div');
+    for (let i=0;i<buttons.length;i++){
+        buttons[i].onclick= function () {
+            for(var j=0;j<contains.length;j++){
+                buttons[j].classList.remove('active');
+                contains[j].classList.remove('active');
+            }
+            this.classList.add('active');
+            contains[i].classList.add('active');
+        }
+    }
+</script>-->
+
+<script>
+    $('#box ul li').on('click',function () {
+        $(this).addClass('active').siblings().removeClass('active').parent().nextAll().eq($(this).index()).addClass('active').siblings('div').removeClass('active')
+    })
+</script>
