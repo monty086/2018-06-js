@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box"></div>
+    <input type="text">
+    <p id="p"></p>
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    /*
+    * jquery 提供了两种方法路径
+    * 一种是把jq当成一个对象，直接调取对象上的属性和方法
+    * 二种，把jq当成一个类，用实例来调取jquery原型上的属性和方法
+    *
+    * */
+    $('#box').addClass('bg')// 给元素添加类名
+    $('#box').removeClass('bg')// 给元素移除类名
+    $('#box').toggleClass('bg')// 有的话就移除，没有就添加
+
+    $('#box').html("<h1>元素</h1>")// 和innerHTML一样
+    $('#box h1').text("哈哈")// 和innerText一样
+    $('input').val('请输入') // 和input中的value一样
+
+    $('#box').attr('class','zhufeng') // 传2个值，属于单个属性设置，一般操作行内样式和属性【内置属性】
+    $('#box').attr({name:'zf',age:9}) // 传一个对象，属于批量设置
+    console.log($('#box').attr('age')); // 传一个值是获取
+
+    $('#box').prop('name','china') // 一般操作自定义属性，不会再行内上显示
+    $('#box').prop({title:0}) // 可以进行修改，不会再行内上显示
+    $('#box').prop('clientHeight') // 可以进行修改，不会再行内上显示
+
+    // 文档处理
+    $('#box').append('<h1>no</h1>') // 和原生的appendChild一个意思；再父级的末尾插入子级
+    $('<h1>yes</h1>').appendTo('#box') // 将子级插入到父级的末尾
+
+    //let a = $('#box').clone();
+    let b = $('#box').clone(true);
+    // $('p').append(b)
+
+    //var a = $.noConflict() // 多库共存，将$转移给前面这个变量
+
+    //事件
+    // $('#box').click(function () {
+    //
+    // })
+    // on 属于预留事件，给未来的元素添加事件
+    $('#box').on('click','a',function () {
+        console.log(2);
+    })
+    // $('#box a').click(function () {
+    //     console.log(1);
+    // })
+
+    //css
+    $('#box').css('width','100px')
+    $('#box').css({background:'red'})
+
+    $('#box').width() // 属性方法
+
+    $('#box').append('<a>我是a标签</a>')
+
+    // jquery对象上的方法
+    // ajax
+    $.ajax({
+        url:'www.baidu.com', // 地址
+        method:'get',  // 请求方式
+        cache:true,  // 是否缓存
+        async:true,  // 是否异步
+        data:'',   // 传输数据
+        dataType:'json',   // 制定参数类型
+        success:function (data) {
+            //成功后获取到的方法
+        },
+        // error:function () {
+        //    //  失败后的提示
+        //     alert('errorLE ')
+        // }
+    })
+
+    console.log($.unique([1, 2, 3, 5, 3, 1, 2]));
+
+</script>

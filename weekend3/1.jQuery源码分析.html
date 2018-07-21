@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 类库：提供了一些常用的方法，我们在开发项目的时候，随时可以引入这些类库，实现我们的业务需求。常用类库：jquery，zepto
+    * 插件：带有一定的业务逻辑。比如说选项卡插件，轮播图插件；我们在项目开发的时候，重复的业务可以用插件来替代；比如说常用的插件：swiper iscroll Echarts;
+    * UI组件：通过html css js组成，我们使用的时候，直接引入就可以了，常用的UI组件：bootstrap antDesign
+    * 框架：它具有一定的编程思想，我们开发的时候需要按照它提供的编程思想进行开发，它提供了相对应的ui组件和功能插件，常用的框架有：React Vue Augular Backbone
+    *
+    *
+    * */
+
+    /*
+    *  jQuery => JQ => $
+    *  jQuery是一个优秀的js类库，它提供了一些常用的属性和方法，这些属性方法兼容所有的浏览器，前端开发很长一段事件都是通过jQuery来开发。
+    *
+    * 熟练的前端开发可以使用获取元素操作元素的一些方法，但是他们做不到兼容所有浏览器，所以对应的jQuery就出现了。
+    * */
+
+    /*
+    * jQuery的版本
+    * 1.xx.xx 最先设计开发出来，它的出现就是为了兼容所有浏览器【在PC端】
+    * 2.xx.xx 为了应对移动端，zepto，更小，和jq的语法一样。不兼容低版本浏览器  ie 6~8
+    * 3.xx.xx  同样不兼容低版本浏览器，新增了一些方法。Augular出现
+    *
+    * */
+
+    /*
+    * 下载jQuery
+    * 官网下载：https://jquery.com/
+    * github下载：https://github.com/jquery/jquery
+    * 百度搜索第三方
+    * 通过npm： npm install jquery
+    *          npm install jquery@1.11.3
+    *          npm view jquery versions
+    *
+    *
+    * */
+
+    /*
+    * 如何学习jquery
+    * 1. 通过分析jquery源码，可以提高我们js的编程能力，和库和插件的封装能力
+    * 2. 通过看Api文档：http://jquery.cuishifeng.cn/
+    * 3. 书：锋利的jQuery
+    * 4. 视频
+    *
+    * */
+
+    (function (global,factory) {
+            factory()
+    })(this,function (window) {
+        var
+            version = "1.11.3",
+            jQuery = function( selector, context ) {
+            // 把jQuery当成一个普通函数，返回值是jQuery的入口文件，是一个实例
+                return new jQuery.fn.init( selector, context );
+                //  jQuery.fn.init =
+                // 返回一个jQuery的实例
+                //return  new jQuery () 会形成死循环
+            };
+
+        //
+        // 把jQuery当前一个函数对象，添加了一个fn属性； = jQuery当成构造函数，对jQuery这个类的原型重新赋值
+        jQuery.fn = jQuery.prototype = {
+            // 添加jquery版本属性键值对
+            jquery: version,
+            // 因为丢失了constructor，为了构造函数的完整，需要重新补写constructor
+            constructor: jQuery,
+            selector: "",
+            length: 0,
+            toArray: function() {
+                return slice.call( this );
+            }
+        };
+        jQuery.extend = jQuery.fn.extend = function(obj) {
+            // jQuery.fn = jQuery.prototype
+            // 将传入的对象，扩展到制定的对象[jQuery\jQuery.fn]中
+        };
+        jQuery.fn.extend({
+            age:function(){}
+        });
+        jQuery.extend({
+            age1:function(){}
+        })
+        jQuery={
+            name:'zf',
+            age1:function(){}
+        }
+        jQuery.fn=jQuery.prototype ={
+            slice:function () {},
+            each:function(){},
+            ...
+            //age:function(){}
+        }
+        var init = jQuery.fn.init = function( selector, context ) {
+            //this => jQuery的实例
+            if ( typeof selector === "string" ) {
+                if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
+                    // Assume that strings that start and end with <> are HTML and skip the regex check
+                    match = [ null, selector, null ];
+
+                } else {
+                    match = rquickExpr.exec( selector );
+                }
+
+                // Match html or make sure no context is specified for #id
+                if ( match && (match[1] || !context) ) {
+
+                    // HANDLE: $(html) -> $(array)
+                    if ( match[1] ) {
+                        context = context instanceof jQuery ? context[0] : context;
+
+                        // scripts is true for back-compat
+                        // Intentionally let the error be thrown if parseHTML is not present
+                        jQuery.merge( this, jQuery.parseHTML(
+                            match[1],
+                            context && context.nodeType ? context.ownerDocument || context : document,
+                            true
+                        ) );
+
+                        // HANDLE: $(html, props)
+                        if ( rsingleTag.test( match[1] ) && jQuery.isPlainObject( context ) ) {
+                            for ( match in context ) {
+                                // Properties of context are called as methods if possible
+                                if ( jQuery.isFunction( this[ match ] ) ) {
+                                    this[ match ]( context[ match ] );
+
+                                    // ...and otherwise set as attributes
+                                } else {
+                                    this.attr( match, context[ match ] );
+                                }
+                            }
+                        }
+
+                        return this;
+
+                        // HANDLE: $(#id)
+                    } else {
+                        elem = document.getElementById( match[2] );
+
+                        // Check parentNode to catch when Blackberry 4.6 returns
+                        // nodes that are no longer in the document #6963
+                        if ( elem && elem.parentNode ) {
+                            // Handle the case where IE and Opera return items
+                            // by name instead of ID
+                            if ( elem.id !== match[2] ) {
+                                return rootjQuery.find( selector );
+                            }
+
+                            // Otherwise, we inject the element directly into the jQuery object
+                            this.length = 1;
+                            this[0] = elem;
+                        }
+
+                        this.context = document;
+                        this.selector = selector;
+                        return this;
+                    }
+
+                    // HANDLE: $(expr, $(...))
+                } else if ( !context || context.jquery ) {
+                    return ( context || rootjQuery ).find( selector );
+
+                    // HANDLE: $(expr, context)
+                    // (which is just equivalent to: $(context).find(expr)
+                } else {
+                    return this.constructor( context ).find( selector );
+                }
+
+                // HANDLE: $(DOMElement)
+            } else if ( selector.nodeType ) {
+                this.context = this[0] = selector;
+                this.length = 1;
+                return this;
+
+                // HANDLE: $(function)
+                // Shortcut for document ready
+            } else if ( jQuery.isFunction( selector ) ) {
+                return typeof rootjQuery.ready !== "undefined" ?
+                    rootjQuery.ready( selector ) :
+                    // Execute immediately if ready is not present
+                    selector( jQuery );
+            }
+
+            if ( selector.selector !== undefined ) {
+                this.selector = selector.selector;
+                this.context = selector.context;
+            }
+
+            return jQuery.makeArray( selector, this );
+        };
+
+        init.prototype = jQuery.fn;
+        /*
+        * jQuery.fn = jQuery.prototype
+        * init.prototype = jQuery.prototype
+        * new jQuery == new init
+        * new init == new jQuery.fn.init == new jQuery
+        *
+        * */
+
+        window.jQuery = window.$ = jQuery;
+    })
+
+    jQuery()
+    $()// 当成函数执行
+    // 返回值：是把jQuery当成一个构造函数，继续返回new出来的一个实例
+    // return  new jQuery.fn.init(selector,context)
+
+    /*
+    * 函数三种身份
+    * 普通函数
+    * 构造函数
+    * 函数对象
+    *
+    *
+    * */
+
+    jQuery.name()
+    new jQuery().slice()
+
+    new jQuery().fn // jq的实例的fn属性
+    new jQuery.fn.init( selector, context )// 属于jQuery.fn.init的实例
+</script>
+
+<script>
+    // 实例.css  = jQuery.prototype.css
+    $('ul',document).css()   // 操作元素的方法
+    // 把jQuery当成一个对象。它的ajax执行
+    $.ajax()    // 工具方法
+
+
+
+</script>

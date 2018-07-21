@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box"></div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    console.log($('#box'));
+    // 我们想要从jq对象中找到原生对象，我们可以通过索引来获取
+    console.log($('#box')[0]);
+    console.log($('#box').get(0));
+    // jq对象转原生对象，通过索引和get(),这两种方式
+
+    console.log($('ul li')) // li是一个集合
+    console.log($('ul li')[1]) // li是一个集合
+    console.log($('ul li').eq(1)) // 通过eq这个属性，找到索引为1的元素，将他转化成一个jq对象，可以调用jq原型上的属性和方法
+
+
+    // 原生对象转jq对象
+    var box = document.getElementById('box');
+    console.log($(box));// 我们把用原生js获取到的元素对象，放到jq这个函数中，这个函数的返回值就是jq对象，我们可以通过这种来实现调取jq原型上的属性和方法
+</script>
