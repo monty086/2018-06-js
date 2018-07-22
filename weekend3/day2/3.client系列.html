@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border:10px solid red;
+            background: yellowgreen;
+            margin:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    /*
+    * 1.client系列
+    * clientWidth : 当前元素可视区域的宽度，不包括边线和滚动条【width+padding】
+    * clientHeight：当前元素可视区域的高度，不包括边线和滚动条【height+padding】
+    * clientTop: 当前元素上边框的宽度【border-top】
+    * clientLeft: 当前元素左边框的宽度【border-left】
+    * */
+    let box = document.getElementById('box');
+    console.log(box.clientWidth);
+    console.log(box.clientHeight);
+    console.log(document.documentElement.clientWidth);
+    // 浏览器窗口的可视区域的宽度和高度
+    document.documentElement.clientWidth || document.body.clientWidth;
+
+    // 封装win方法
+    // 通过win方法获取浏览器可视区域窗口的高度和宽度，也可以设置窗口的卷上去的高度和向右边卷出去的宽度
+    function win(attr,value) {
+        if(value == undefined){
+            return document.documentElement[attr]|| document.body[attr]
+        };
+        // 如果value有值，我们要对他进行设置【scrollTop\scrollLeft】
+        // 给html和body 两个标签进行设置值
+        document.documentElement[attr]=value;
+        document.body[attr]=value
+    }
+
+
+
+
+
+</script>

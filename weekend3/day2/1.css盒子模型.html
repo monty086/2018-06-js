@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border:10px solid red;
+            background: yellowgreen;
+            margin:100px;
+            box-sizing: border-box;
+            /*盒子的宽度变成了60 我们需要让content+padding+border=100px*/
+            /*inherit:继承了父元素的盒模型属性*/
+            /*content-box：标准盒模型*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+    </div>
+</body>
+</html>
+<script>
+    /*
+    * css盒子模型
+    * 1. 标准盒模型
+    * 2. 怪异盒模型：只有ie浏览器才有，我们可以通过box-sizing这个属性来控制，属性值为border-box的时候，这时候盒子的宽度就包括 内容宽度+左右padding+左右border
+    *
+    * */
+</script>
