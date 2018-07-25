@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border:10px solid red;
+            margin:100px auto;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！我不是js盒子模型，不要看我！！！
+    </div>
+</body>
+</html>
+<script>
+    /*
+    * scroll系列
+    * 1. scrollWidth：当前元素真实内容【包括溢出部分】的宽度
+    *   // 没有溢出：和【clientWidth/clientHeight】一样
+    *   // 溢出：上padding+真实内容的 【高度/宽度】 溢出隐藏和溢出滚动不会受影响
+    * 2. scrollHeight：当前元素真实内容【包括溢出部分】的高度
+    * 3. scrollLeft: 当前元素向右卷出去的宽度
+    * 4. scrollTop: 当前元素向下卷出去的高度
+    * // 我们给盒子设置scrollTop和scrollLeft实际控制是盒子内容滚动的距离
+    * */
+
+    box.onscroll = function () {
+        console.log(1);
+    }
+</script>

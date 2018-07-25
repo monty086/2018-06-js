@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            /*position: fixed;*/
+        }
+    </style>
 </head>
 <body>
-
+    <div id="box">
+        <p id="p"></p>
+    </div>
 </body>
 </html>
 <script>
@@ -18,4 +29,39 @@
     * offsetLeft: 当前盒子外边距距离父级参照物内边距的左偏移量
     * offsetTop: 当前盒子外边距距离父级参照物内边距的上偏移量
     * */
+
+    let box = document.getElementById('box');
+    let p = document.getElementById('p');
+    // 只有设置样式定位position的时候，父级参照物才会发生变化
+    console.log(p.offsetParent);
+
+    /*
+    * offset
+    * 想要求一个元素距离body的距离，需要考虑当前这个元素的所有父级们，是否具有定位属性，一旦父级具有定位属性，我们需要计算【当前元素距离父级参照物+父级的border+父级参照物到body的距离】
+    * document.body.offsetParent: null
+    * */
+    function offset(ele) {
+        // 父级参照物是body的时候【A】
+        let L = ele.offsetLeft;
+        let T = ele.offsetTop;
+        // 父级参照物不是body的时候【父级参照物元素设置了定位】
+        let parent = ele.offsetParent;
+        while(parent){ // NULL false
+            // 如果是ie8的情况下，它的偏移量包括了border的宽度，我们不需要进行累加
+            if(!/MSIE 8/.test(window.navigator.userAgent)){
+                // 加上父级的border的宽度【B】
+                L+= parent.clientLeft;
+                T+= parent.clientTop;
+            }
+            // 加上父级距离body的偏移量【C】
+            L+= parent.offsetLeft;
+            T+= parent.offsetTop;
+            // 如果父级有很多，需要不断取循环父级参照物，只到父级参照物等于null
+            parent = parent.offsetParent
+        }
+        return {left:L,top:T}
+    }
+    //offset(box)// =>>{left:L,top:T}
+    //offset(box).left
+
 </script>
