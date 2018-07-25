@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box"></div>
+    <ul>
+        <li>
+            <p></p>
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+<p></p>
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<!--<script src="jquery.js"></script>-->
+<script>
+    console.log(jQuery)
+    // jQuery的实例就是jQuery这个函数执行的返回值
+
+    console.dir($);
+    $()
+
+    /*
+    * 参数 selector context
+    * selector：
+    * 1. 字符串： 如果参数1是一个字符串，第二个参数代表当前元素的上下文，不写的话默认是document；那么返回值就是jquery的选择器
+    * 2. 节点类型： 通过js获取到的元素才有节点类型，如果传的是一个元素的话，返回值是一个jq对象
+    * 3. 函数： 如果传的是一个函数，那么就属于让函数执行【什么时候执行？dom结构加载完毕以后再执行】
+    * // 面试题：window.onload 和 $(document).ready() 什么区别
+    * */
+    var box = document.getElementById('box');
+    console.log(box)
+    console.log($('#box')); // 字符串，所以代表选择器 返回值是jq的实例，
+
+    /*
+    *
+    *   0:div#box  // 当前的这个选中的元素
+        context:document  // 当前元素的上下文
+        length:1  // 个数
+        selector:"#box"  // 选择器中的内容
+    * */
+
+    // 基本选择器 => 常用的css选择器都适用
+    $('#box') //ID选择器
+    $('.box') //类名选择器
+    $('div') //标签名选择器  // 获取的是一个元素集合是一个类数组
+    $('*')  // 通配符选择器
+    $('div,p') // 集合选择器
+
+    // 层级选择器
+    $('div p')  // 后代选择器
+    $('div>p')  // 子代选择器
+    $('div+p')  // 相邻兄弟选择器
+    $('div~')  // 所有弟弟选择器
+
+    // 基本筛选选择器
+    $('ul li:first') // 第一个li元素
+    $('ul li:last') // 最后一个li元素
+    $('ul li:even') // 偶数li元素
+    $('ul li:odd') // 奇数li元素
+    $('ul li:eq(n)') // 索引为n的li元素
+    $('ul li:gt(n)') // 大于索引为n的li元素
+    $('ul li:lt(n)') // 小于索引为n的li元素
+
+    // 内容选择器
+    $('li:contains("我醉了")') // 内容为我醉了的li
+    $('li:has(p)') // 里面有p标签的li
+    $('li:empty') // 里面为空的li
+    $('li:parent') // 里面不为空的li
+
+    // 我们通过这些选择器获取到的是一个类数组，不管是一个元素还是多个元素，都是一个类数组,也是一个jq的实例，它可以调用jQuery上提供的所有公有方法和属性；
+    $('li:has(p)').addClass('bg');
+    // extends//
+
+    // selector.noteType // 返回值是jq对象
+    console.log($(box));
+    box.addClass()// box.classList.add()
+    $(box).addClass()
+
+    // 3 传了一个函数，dom全部加载完成之后才会执行的一个函数。
+    $(function () {
+        console.log(1);
+    })
+    // window.onload = function(){ }
+    // $(document).ready()
+
+    /*
+    * window.onload :他会等待页面中全部的资源加载完成后才会执行所赋值的方法；
+    * $(document).ready():
+    * $(function(){}):  他会等待dom加载完毕之后，执行后续的方法
+    *
+    * */
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li style="width: 100px">
+        <p></p>
+    </li>
+    <li style="width: 200px"></li>
+    <li class='last' style="width: 300px"></li>
+</ul>
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    /*
+    * each 方法，它是用来便利 数组 、对象 、类数组
+    * each 方法既存在与jquery的对象上，也存在与jquery的原型上
+    * 1. jquery的对象上的方法each，它可以便利数组、对象、类数组、；有多少项执行多少次函数，函数中的参数【索引，当前项】，函数中的this是实例化的值；
+    * 2. jquery原型上的each方法：通过实例来调用each方法，元素集合有多少个，函数执行多少次，执行的函数中的value值和this都属于原生对象；
+    * 3. 设置和修改的时候，默认调用each方法，获取的时候：只获取第一个jq对象的值
+    *
+    * */
+    /*$.each([3,4,5,6],function (key,value) {
+        console.log(key,value)
+        console.log(this);//也是value 它是实例化的
+    })*/
+    /*$.each({name:'zf',age:9},function (key,value) {
+        console.log(key,value)
+        console.log(this);//也是value 它是实例化的
+    })*/
+
+    $('ul li').each(function (key,value) {
+        console.log(key,value)
+        // 便利拿到的value值，它是一个原生对象
+        console.log(this); // this也是一个原生对象
+        $(this)// 将原生对象转变为jq对象
+    })
+
+    $('ul li').addClass('bg');
+    // 对所有的jq元素进行便利添加
+    $('ul li').removeClass('bg');
+    // 修改、移除时候会便利所有jq对象
+    console.log($('ul li').width());
+    // 获取的时候只获取第一个
+
+    console.log($('li').filter('.last'));  // 同级筛选
+    console.log($('ul').children('li'));  //$('ul>p') 子级筛选
+    console.log($('ul').find('p')); //$('ul p')  后代筛选
+</script>
